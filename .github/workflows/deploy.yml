@@ -52,13 +52,14 @@ jobs:
               mkdir -p "$(dirname "$out")"
 
               body="$(marked "$file")"
+              nn="$(basename "$(dirname "$file")")"
               cat > "$out" <<EOF
           <!doctype html>
           <html lang="fr">
             <head>
               <meta charset="utf-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1" />
-              <title>$(basename "${file%.md}")</title>
+              <title>Labo Tech Info 2 — Exercices séance ${nn}</title>
               <style>
                 :root {
                   --color-primary: #0075c9;
@@ -200,7 +201,7 @@ jobs:
             <head>
               <meta charset="utf-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1" />
-              <title>Techniques Informatiques 2 — ISIB</title>
+              <title>Labo Tech Info 2</title>
               <style>
                 :root {
                   --color-primary: #0075c9;

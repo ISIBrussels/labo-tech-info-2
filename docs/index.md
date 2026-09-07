@@ -1,11 +1,11 @@
-# Techniques Informatiques 2 — Cours & Laboratoire
+# Laboratoire de Techniques Informatiques 2
 
-Bienvenue. Ce site est destiné aux étudiants des activités d'apprentissage **Techniques Informatiques 2** et **Laboratoire de Techniques Informatiques 2** du **2e bachelier** à l'**ISIB** (HE2B).
+Bienvenue. Ce site est destiné aux étudiants de l'activité d'apprentissage **Laboratoire de Techniques Informatiques 2** du **2e bachelier** à l'**ISIB** (HE2B).
 
-Vous y trouverez l'ensemble des ressources pédagogiques du cours et du laboratoire :
+Vous y trouverez l'ensemble des ressources du laboratoire :
 
 - les **slides de cours** et des **quiz**
-- les **énoncés d'exercices** de laboratoire
+- les **énoncés d'exercices**
 
 ## Tableau des séances
 

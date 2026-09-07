@@ -1,11 +1,11 @@
-# Techniques Informatiques 2 & Laboratoire de Techniques Informatiques 2
+# Laboratoire de Techniques Informatiques 2
 
-Dépôt du cours "Techniques Informatiques 2" et du "Laboratoire de Techniques Informatiques 2" du bachelier de 2e année en ingénierie industrielle à l'ISIB - HE2B.
+Dépôt du **Laboratoire de Techniques Informatiques 2** du bachelier de 2e année en ingénierie industrielle à l'ISIB - HE2B.
 
 ## Accès rapide aux contenus
 
 - Landing page GitHub Pages : [https://isibrussels.github.io/labo-tech-info-2/](https://isibrussels.github.io/labo-tech-info-2/)
-- Slides de cours + exercices : liens ci-dessous
+- Slides de cours, quiz et exercices : liens ci-dessous
 
 ## Séances
 
