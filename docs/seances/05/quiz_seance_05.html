@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quiz — Séance 5</title>
+    <style>
+      :root {
+        --color-primary: #0075c9;
+        --color-secondary: #757575;
+        --color-bg: #ffffff;
+        --color-text: #212121;
+        --color-border: #e0e0e0;
+        --color-row-alt: #f5f5f5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 2.5rem 1.5rem 3rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        line-height: 1.65;
+        color: var(--color-text);
+        background: var(--color-bg);
+      }
+
+      h1 {
+        margin: 0 0 1.25rem;
+        font-size: 1.85rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        padding-bottom: 0.6rem;
+        border-bottom: 2px solid var(--color-primary);
+      }
+
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--color-secondary);
+      }
+
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+
+      .page-nav {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin: 0 0 1.25rem;
+      }
+
+      .page-nav a {
+        display: inline-block;
+        padding: 0.3rem 0.7rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--color-primary);
+        text-decoration: none;
+        background: transparent;
+        border: 1px solid var(--color-primary);
+      }
+
+      .page-nav a:hover {
+        background: var(--color-primary);
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .card {
+        border: 1px solid var(--color-border);
+        padding: 1rem;
+        margin-top: 1rem;
+        background: var(--color-bg);
+      }
+
+      .answers {
+        display: grid;
+        gap: 0;
+        margin: 1rem 0;
+        border: 1px solid var(--color-border);
+      }
+
+      .answers label {
+        display: block;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--color-border);
+        cursor: pointer;
+      }
+
+      .answers label:last-child {
+        border-bottom: none;
+      }
+
+      .answers label:nth-child(even) {
+        background: var(--color-row-alt);
+      }
+
+      button {
+        padding: 0.6rem 0.9rem;
+        border: 1px solid var(--color-primary);
+        background: transparent;
+        color: var(--color-primary);
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      button:hover:not(:disabled) {
+        background: var(--color-primary);
+        color: #fff;
+      }
+
+      button:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+
+      .actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+
+      #reset-btn {
+        margin-left: auto;
+      }
+
+      .progress {
+        margin: 0 0 0.5rem;
+        font-size: 0.95rem;
+        color: var(--color-secondary);
+      }
+
+      .result {
+        font-weight: 600;
+        margin-top: 1rem;
+      }
+
+      .ok {
+        color: var(--color-primary);
+      }
+
+      .ko {
+        color: var(--color-secondary);
+      }
+
+      .muted {
+        color: var(--color-secondary);
+      }
+
+      .question-feedback {
+        margin-top: 0.75rem;
+        font-size: 0.95rem;
+      }
+
+      .results-detail {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 1rem;
+        font-weight: normal;
+      }
+
+      .result-item {
+        border: 1px solid var(--color-border);
+        padding: 0.75rem 1rem;
+      }
+
+      .result-item h3 {
+        margin: 0 0 0.35rem;
+        font-size: 1rem;
+        color: var(--color-secondary);
+      }
+
+      .result-item p {
+        margin: 0.25rem 0;
+      }
+
+      .result-item .verdict {
+        font-weight: 600;
+        margin-top: 0.5rem;
+      }
+
+      .recap-options {
+        list-style: none;
+        margin: 0.75rem 0 0;
+        padding: 0;
+        display: grid;
+        gap: 0;
+        border: 1px solid var(--color-border);
+      }
+
+      .recap-option {
+        padding: 0.45rem 0.65rem;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .recap-option:last-child {
+        border-bottom: none;
+      }
+
+      .recap-option.correct {
+        background: var(--color-row-alt);
+        color: var(--color-primary);
+        font-weight: 600;
+      }
+
+      .recap-option.wrong {
+        color: var(--color-secondary);
+        text-decoration: line-through;
+      }
+
+      .recap-tag {
+        display: inline-block;
+        margin-left: 0.35rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--color-secondary);
+      }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.88em;
+        background: var(--color-row-alt);
+        color: var(--color-secondary);
+        padding: 0.1em 0.35em;
+      }
+
+      .site-footer {
+        margin-top: 2.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--color-border);
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--color-secondary);
+      }
+
+      .site-footer a {
+        color: var(--color-secondary);
+        text-decoration: underline;
+        font-weight: 400;
+      }
+
+      .site-footer a:hover {
+        color: var(--color-primary);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Quiz — Séance 5</h1>
+    <nav class="page-nav">
+      <a href="../../index.html">← Retour à l'accueil</a>
+      <a href="cours_seance_05.html">Retour aux slides</a>
+    </nav>
+    <p class="muted">Placeholder : une question dummy, à remplacer plus tard.</p>
+
+    <section class="card">
+      <p class="progress" id="progress"></p>
+      <div id="quiz"></div>
+      <p class="question-feedback" id="feedback" aria-live="polite"></p>
+    </section>
+
+    <div class="actions">
+      <button id="prev-btn" type="button">Précédent</button>
+      <button id="next-btn" type="button">Suivant</button>
+      <button id="check-btn" type="button" hidden>Vérifier tout</button>
+      <button id="reset-btn" type="button">Recommencer</button>
+    </div>
+    <div id="summary" class="result" aria-live="polite"></div>
+
+    <script>
+      const storageKey = "quiz_seance_05_answers_v1";
+      const indexKey = "quiz_seance_05_index_v1";
+
+      const questions = [
+        {
+          id: "q1",
+          text: "Ceci est une question placeholder. Quelle est la bonne réponse ?",
+          options: [
+            { value: "A", label: "Réponse A" },
+            { value: "B", label: "Réponse B" },
+            { value: "C", label: "La bonne réponse" },
+            { value: "D", label: "Réponse D" },
+          ],
+          correct: "C",
+          feedback: "Placeholder : la bonne réponse est C. Remplacez cette question par le quiz de la séance 5.",
+        },
+      ];
+
+      const quizEl = document.getElementById("quiz");
+      const progressEl = document.getElementById("progress");
+      const feedbackEl = document.getElementById("feedback");
+      const summaryEl = document.getElementById("summary");
+      const prevBtn = document.getElementById("prev-btn");
+      const nextBtn = document.getElementById("next-btn");
+      const checkBtn = document.getElementById("check-btn");
+      const resetBtn = document.getElementById("reset-btn");
+
+      let currentIndex = 0;
+      let checked = false;
+      const answers = {};
+
+      function loadState() {
+        const rawAnswers = localStorage.getItem(storageKey);
+        const rawIndex = localStorage.getItem(indexKey);
+
+        if (rawAnswers) {
+          try {
+            Object.assign(answers, JSON.parse(rawAnswers));
+          } catch {
+            localStorage.removeItem(storageKey);
+          }
+        }
+
+        if (rawIndex !== null) {
+          const index = Number(rawIndex);
+          if (Number.isInteger(index) && index >= 0 && index < questions.length) {
+            currentIndex = index;
+          }
+        }
+      }
+
+      function saveState() {
+        localStorage.setItem(storageKey, JSON.stringify(answers));
+        localStorage.setItem(indexKey, String(currentIndex));
+      }
+
+      function getCurrentQuestion() {
+        return questions[currentIndex];
+      }
+
+      function renderOptionsRecap(question, answer) {
+        return `
+          <ul class="recap-options">
+            ${question.options
+              .map((option) => {
+                const isCorrect = option.value === question.correct;
+                const isChosen = option.value === answer;
+                const classes = ["recap-option"];
+                if (isCorrect) classes.push("correct");
+                if (isChosen && !isCorrect) classes.push("wrong");
+
+                let tag = "";
+                if (isCorrect) tag = '<span class="recap-tag">bonne réponse</span>';
+                else if (isChosen) tag = '<span class="recap-tag">réponse sélectionnée</span>';
+
+                return `<li class="${classes.join(" ")}">${option.value}. ${option.label}${tag}</li>`;
+              })
+              .join("")}
+          </ul>
+        `;
+      }
+
+      function renderQuestion() {
+        const question = getCurrentQuestion();
+        const selected = answers[question.id] || null;
+
+        progressEl.textContent = `Question ${currentIndex + 1} / ${questions.length}`;
+        quizEl.innerHTML = `
+          <h2>Question ${currentIndex + 1}</h2>
+          <p><strong>${question.text}</strong></p>
+          <div class="answers">
+            ${question.options
+              .map(
+                (option) => `
+              <label>
+                <input
+                  type="radio"
+                  name="${question.id}"
+                  value="${option.value}"
+                  ${selected === option.value ? "checked" : ""}
+                  ${checked ? "disabled" : ""}
+                />
+                ${option.value}. ${option.label}
+              </label>
+            `
+              )
+              .join("")}
+          </div>
+        `;
+
+        if (!checked) {
+          quizEl.querySelectorAll(`input[name="${question.id}"]`).forEach((input) => {
+            input.addEventListener("change", () => {
+              answers[question.id] = input.value;
+              feedbackEl.textContent = "";
+              feedbackEl.className = "question-feedback";
+              summaryEl.innerHTML = "";
+              summaryEl.className = "result";
+              saveState();
+            });
+          });
+        }
+
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.hidden = currentIndex === questions.length - 1;
+        checkBtn.hidden = currentIndex !== questions.length - 1 || checked;
+
+        feedbackEl.textContent = "";
+        feedbackEl.className = "question-feedback";
+
+        if (checked) {
+          renderSummary();
+        }
+      }
+
+      function renderSummary() {
+        let score = 0;
+        const items = questions.map((question, index) => {
+          const answer = answers[question.id];
+          const isCorrect = answer === question.correct;
+          if (isCorrect) score += 1;
+
+          const verdictClass = !answer ? "ko" : isCorrect ? "ok" : "ko";
+          const verdictText = !answer
+            ? "Non répondue."
+            : isCorrect
+              ? `Correct. ${question.feedback}`
+              : `Incorrect. ${question.feedback}`;
+
+          return `
+            <section class="result-item">
+              <h3>Question ${index + 1}</h3>
+              <p><strong>${question.text}</strong></p>
+              ${renderOptionsRecap(question, answer)}
+              <p class="verdict ${verdictClass}">${verdictText}</p>
+            </section>
+          `;
+        });
+
+        summaryEl.innerHTML = `
+          <p class="${score === questions.length ? "ok" : "ko"}">Score : ${score} / ${questions.length}</p>
+          <div class="results-detail">${items.join("")}</div>
+        `;
+        summaryEl.className = "result";
+      }
+
+      function checkAll() {
+        const unanswered = questions.filter((question) => !answers[question.id]);
+        if (unanswered.length > 0) {
+          feedbackEl.textContent = `Il reste ${unanswered.length} question(s) sans réponse.`;
+          feedbackEl.className = "question-feedback ko";
+          return;
+        }
+
+        checked = true;
+        saveState();
+        renderQuestion();
+      }
+
+      function resetQuiz() {
+        for (const key of Object.keys(answers)) {
+          delete answers[key];
+        }
+        currentIndex = 0;
+        checked = false;
+        localStorage.removeItem(storageKey);
+        localStorage.removeItem(indexKey);
+        feedbackEl.textContent = "";
+        feedbackEl.className = "question-feedback";
+        summaryEl.innerHTML = "";
+        summaryEl.className = "result";
+        renderQuestion();
+      }
+
+      prevBtn.addEventListener("click", () => {
+        if (currentIndex > 0) {
+          currentIndex -= 1;
+          saveState();
+          renderQuestion();
+        }
+      });
+
+      nextBtn.addEventListener("click", () => {
+        if (currentIndex < questions.length - 1) {
+          currentIndex += 1;
+          saveState();
+          renderQuestion();
+        }
+      });
+
+      checkBtn.addEventListener("click", checkAll);
+      resetBtn.addEventListener("click", resetQuiz);
+
+      loadState();
+      renderQuestion();
+    </script>
+
+    <footer class="site-footer"><a href="mailto:shuraux@he2b.be">Sylvain Huraux - HE2B - ISIB</a></footer>
+  </body>
+</html>
