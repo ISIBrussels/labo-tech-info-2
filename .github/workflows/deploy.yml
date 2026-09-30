@@ -52,14 +52,17 @@ jobs:
               mkdir -p "$(dirname "$out")"
 
               body="$(marked "$file")"
-              nn="$(basename "$(dirname "$file")")"
+              session_num="${file##*_seance_}"
+              session_num="${session_num%.md}"
+              session_num=$((10#$session_num))
+              page_title="Séance ${session_num} — Exercices"
               cat > "$out" <<EOF
           <!doctype html>
           <html lang="fr">
             <head>
               <meta charset="utf-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1" />
-              <title>Labo Tech Info 2 — Exercices séance ${nn}</title>
+              <title>${page_title}</title>
               <style>
                 :root {
                   --color-primary: #0075c9;

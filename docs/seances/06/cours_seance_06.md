@@ -1,7 +1,7 @@
 ---
 marp: true
 theme: tech-info
-title: "Labo Tech Info 2 — Séance 6"
+title: "Séance 6 — Thème à définir"
 paginate: true
 header: "Labo Tech Info 2 — Séance 6 [Sylvain Huraux - HE2B - ISIB](mailto:shuraux@he2b.be)"
 footer: "[← Retour à l'accueil](../../index.html)"
