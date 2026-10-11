@@ -337,6 +337,22 @@
         localStorage.setItem(indexKey, String(currentIndex));
       }
 
+      function shuffleInPlace(items) {
+        for (let i = items.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          const tmp = items[i];
+          items[i] = items[j];
+          items[j] = tmp;
+        }
+        return items;
+      }
+
+      function shuffleAllOptions() {
+        questions.forEach((question) => {
+          shuffleInPlace(question.options);
+        });
+      }
+
       function getCurrentQuestion() {
         return questions[currentIndex];
       }
@@ -472,6 +488,7 @@
         feedbackEl.className = "question-feedback";
         summaryEl.innerHTML = "";
         summaryEl.className = "result";
+        shuffleAllOptions();
         renderQuestion();
       }
 
@@ -495,6 +512,7 @@
       resetBtn.addEventListener("click", resetQuiz);
 
       loadState();
+      shuffleAllOptions();
       renderQuestion();
     </script>
 
