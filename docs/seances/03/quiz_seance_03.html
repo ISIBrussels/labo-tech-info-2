@@ -279,21 +279,21 @@
     <div id="summary" class="result" aria-live="polite"></div>
 
     <script>
-      const storageKey = "quiz_seance_03_answers_v1";
-      const indexKey = "quiz_seance_03_index_v1";
+      const storageKey = "quiz_seance_03_answers_v2";
+      const indexKey = "quiz_seance_03_index_v2";
 
       const questions = [
         {
           id: "q1",
           text: "Ceci est une question placeholder. Quelle est la bonne réponse ?",
           options: [
-            { value: "A", label: "Réponse A" },
-            { value: "B", label: "Réponse B" },
-            { value: "C", label: "La bonne réponse" },
-            { value: "D", label: "Réponse D" },
+            { value: "opt1", label: "Réponse 1" },
+            { value: "opt2", label: "Réponse 2" },
+            { value: "opt3", label: "La bonne réponse" },
+            { value: "opt4", label: "Réponse 4" },
           ],
-          correct: "C",
-          feedback: "Placeholder : la bonne réponse est C. Remplacez cette question par le quiz de la séance 3.",
+          correct: "opt3",
+          feedback: "Placeholder : la bonne réponse est « La bonne réponse ». Remplacez cette question par le quiz de la séance 3.",
         },
       ];
 
@@ -351,6 +351,11 @@
         });
       }
 
+      /** Display letter for visible position (always A, B, C, D after shuffle). */
+      function optionLetter(index) {
+        return String.fromCharCode(65 + index);
+      }
+
       function getCurrentQuestion() {
         return questions[currentIndex];
       }
@@ -359,7 +364,8 @@
         return `
           <ul class="recap-options">
             ${question.options
-              .map((option) => {
+              .map((option, index) => {
+                const letter = optionLetter(index);
                 const isCorrect = option.value === question.correct;
                 const isChosen = option.value === answer;
                 const classes = ["recap-option"];
@@ -370,7 +376,7 @@
                 if (isCorrect) tag = '<span class="recap-tag">bonne réponse</span>';
                 else if (isChosen) tag = '<span class="recap-tag">réponse sélectionnée</span>';
 
-                return `<li class="${classes.join(" ")}">${option.value}. ${option.label}${tag}</li>`;
+                return `<li class="${classes.join(" ")}">${letter}. ${option.label}${tag}</li>`;
               })
               .join("")}
           </ul>
@@ -388,7 +394,7 @@
           <div class="answers">
             ${question.options
               .map(
-                (option) => `
+                (option, index) => `
               <label>
                 <input
                   type="radio"
@@ -397,7 +403,7 @@
                   ${selected === option.value ? "checked" : ""}
                   ${checked ? "disabled" : ""}
                 />
-                ${option.value}. ${option.label}
+                ${optionLetter(index)}. ${option.label}
               </label>
             `
               )
