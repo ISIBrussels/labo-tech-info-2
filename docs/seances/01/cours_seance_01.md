@@ -22,6 +22,7 @@ Fonction `input`
 - Ouvrir un projet, lancer un script, lire une erreur
 - Rappeler le socle utile de TI1 (sans tout rejouer)
 - Découvrir `input` : saisie clavier, toujours une `str`
+- One-liners classiques : `int(input(...))`, `float(input(...))`, `print(f"...")`
 - Enchaîner `input` + casting pour de petits dialogues
 
 ---
@@ -229,14 +230,25 @@ age = int(age_text)
 print(f"Dans 10 ans : {age + 10}")
 ```
 
-Ou en une ligne :
+Deux étapes : lire (toujours une `str`), puis convertir.
+On peut aussi le faire en une seule instruction.
+
+---
+
+## One-liners classiques
+
+Formules très fréquentes dès qu'on combine `input` et le casting TI1 :
 
 ```python
+name = input("Prénom : ")
 age = int(input("Âge : "))
 price = float(input("Prix : "))
+print(f"{name} a {age} ans.")
 ```
 
-L'invite doit être claire : l'utilisateur doit savoir quoi taper.
+- `int(input(...))` / `float(input(...))` : saisie + conversion sur une ligne
+- `print(f"...")` : affichage formaté (rappel *f-string* TI1)
+- Pas de compréhensions de listes ni d'astuces « golf » : on reste lisible
 
 ---
 
@@ -321,6 +333,7 @@ Objectif du jour : un dialogue correct, pas un programme « blindé ».
 - LTI2 se fait dans PyCharm (TI1 : Thonny)
 - Projet, Run, console pour la sortie et les erreurs
 - `input` lit au clavier et renvoie toujours une `str`
+- One-liners : `int(input(...))`, `float(input(...))`, `print(f"...")`
 - Casting (`int`, `float`) pour calculer sur la saisie
 - Petits menus / dialogues avec conditions et boucles
 - Suite : modules (séance 2)
