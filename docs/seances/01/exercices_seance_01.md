@@ -5,7 +5,9 @@
   <a href="cours_seance_01.html">Slides du cours</a>
 </nav>
 
-Les énoncés de cette séance seront ajoutés ultérieurement.
+Travaillez dans **PyCharm** (projet de la séance), plus dans Thonny comme en TI1.
+
+Les énoncés détaillés de cette séance seront ajoutés ultérieurement. En attendant, réinvestissez le cours : scripts avec `input`, casting, et petits dialogues / menus.
 
 <nav class="page-nav">
   <a href="../../index.html">← Retour à l'accueil</a>

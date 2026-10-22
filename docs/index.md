@@ -11,7 +11,7 @@ Vous y trouverez l'ensemble des ressources du laboratoire :
 
 | Séance | Thème | Cours | Quiz | Exercices |
 | :---: | --- | :---: | :---: | :---: |
-| 1 | Fonction `input` | [Cours](seances/01/cours_seance_01.md) | [Quiz](seances/01/quiz_seance_01.html) | [Exercices](seances/01/exercices_seance_01.md) |
+| 1 | Fonction `input`, prise en main de PyCharm | [Cours](seances/01/cours_seance_01.md) | [Quiz](seances/01/quiz_seance_01.html) | [Exercices](seances/01/exercices_seance_01.md) |
 | 2 | Modules *built-in* et modules personnels | [Cours](seances/02/cours_seance_02.md) | [Quiz](seances/02/quiz_seance_02.html) | [Exercices](seances/02/exercices_seance_02.md) |
 | 3 | Exceptions, `try` / `except` | [Cours](seances/03/cours_seance_03.md) | [Quiz](seances/03/quiz_seance_03.html) | [Exercices](seances/03/exercices_seance_03.md) |
 | 4 | Fichiers texte, JSON et CSV | [Cours](seances/04/cours_seance_04.md) | [Quiz](seances/04/quiz_seance_04.html) | [Exercices](seances/04/exercices_seance_04.md) |
