@@ -33,9 +33,9 @@ Sept séances, dans cet ordre :
 1. Modules (*built-in* et personnels) (aujourd'hui)
 2. Exceptions
 3. Manipulation de fichiers (txt, JSON, csv) + `input`
-4. numpy et ndarray
-5. Pandas (bases)
-6. Pandas (suite)
+4. Numpy : tableaux ndarray
+5. Pandas : series et dataframe (bases)
+6. Pandas : series et dataframe (suite)
 7. Matplotlib
 
 On commence par l'outil et l'`import`. Le reste viendra ensuite.

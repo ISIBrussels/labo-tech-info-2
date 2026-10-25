@@ -30,9 +30,9 @@ Manipulation de fichiers (txt, JSON, csv)
 1. Modules (*built-in* et personnels)
 2. Exceptions
 3. Manipulation de fichiers + `input` (aujourd'hui)
-4. numpy et ndarray
-5. Pandas (bases)
-6. Pandas (suite)
+4. Numpy : tableaux ndarray
+5. Pandas : series et dataframe (bases)
+6. Pandas : series et dataframe (suite)
 7. Matplotlib
 
 ---
@@ -241,6 +241,6 @@ Aujourd'hui : scripts utiles **et** robustes.
 - txt / JSON / csv avec `with open(...)`
 - `json` / `csv` / `pathlib` : modules S1 en situation I/O
 - `try` / `except` (S2) pour ne pas planter
-- Suite : numpy et ndarray (séance 4)
+- Suite : Numpy : tableaux ndarray (séance 4)
 
 [→ Quiz](quiz_seance_03.html) [→ Exercices](exercices_seance_03.html)
