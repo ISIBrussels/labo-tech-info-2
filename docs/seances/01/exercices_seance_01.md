@@ -7,7 +7,7 @@
 
 Travaillez dans **PyCharm** (projet de la séance), plus dans Thonny comme en TI1.
 
-Les énoncés détaillés de cette séance seront ajoutés ultérieurement. En attendant, réinvestissez le cours : `input` + casting, puis lecture / écriture de fichiers **txt**, **JSON** et **csv**.
+Les énoncés détaillés de cette séance seront ajoutés ultérieurement. En attendant, réinvestissez le cours : `import` de modules *built-in*, puis un module personnel (`.py`) importé depuis un script avec `main()`.
 
 <nav class="page-nav">
   <a href="../../index.html">← Retour à l'accueil</a>

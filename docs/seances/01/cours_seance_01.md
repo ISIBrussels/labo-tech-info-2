@@ -1,7 +1,7 @@
 ---
 marp: true
 theme: tech-info
-title: "Séance 1 — Manipulation de fichiers (txt, JSON, csv)"
+title: "Séance 1 — Modules built-in et personnels"
 paginate: true
 header: "Labo Tech Info 2 — Séance 1 [Sylvain Huraux - HE2B - ISIB](mailto:shuraux@he2b.be)"
 footer: "[← Retour à l'accueil](../../index.html)"
@@ -9,7 +9,7 @@ footer: "[← Retour à l'accueil](../../index.html)"
 
 # Séance 1
 
-Manipulation de fichiers (txt, JSON, csv)
+Modules *built-in* et modules personnels
 
 [→ Quiz](quiz_seance_01.html)
 [→ Exercices](exercices_seance_01.html)
@@ -19,10 +19,10 @@ Manipulation de fichiers (txt, JSON, csv)
 ## Objectifs de la séance
 
 - Passer de Thonny (TI1) à PyCharm pour le labo
-- Ouvrir un projet, lancer un script, lire une erreur
-- Découvrir `input` : saisie clavier, toujours une `str` ; one-liners classiques
-- Lire et écrire des fichiers **txt**, **JSON**, **csv**
-- Enchaîner saisie et fichiers dans de petits scripts
+- Comprendre ce qu'est un *module* et comment l'`importer`
+- Utiliser des modules de la bibliothèque standard
+- Créer et importer ses propres modules (fichiers `.py`)
+- Relier brièvement à `if __name__ == "__main__"` (déjà vu en TI1)
 
 ---
 
@@ -30,15 +30,15 @@ Manipulation de fichiers (txt, JSON, csv)
 
 Sept séances, dans cet ordre :
 
-1. Manipulation de fichiers (txt, JSON, csv) + `input` (aujourd'hui)
+1. Modules (*built-in* et personnels) (aujourd'hui)
 2. Exceptions
-3. numpy et ndarray
-4. Pandas (bases)
-5. Pandas (suite)
-6. Modules (*built-in* et personnels)
+3. Manipulation de fichiers (txt, JSON, csv) + `input`
+4. numpy et ndarray
+5. Pandas (bases)
+6. Pandas (suite)
 7. Matplotlib
 
-On commence par l'outil, la saisie, puis les fichiers. Le reste viendra ensuite.
+On commence par l'outil et l'`import`. Le reste viendra ensuite.
 
 ---
 
@@ -52,307 +52,188 @@ Thonny n'est pas « faux » : on change d'outil parce que le travail évolue.
 
 ---
 
-## PyCharm : vue d'ensemble
+## PyCharm : l'essentiel
 
-*PyCharm* (édition Community, gratuite) regroupe notamment :
+*PyCharm* (édition Community) : éditeur, explorateur de projet, bouton Run, console, terminal.
 
-- un éditeur de code (coloration, indentation, suggestions)
-- un explorateur de fichiers / projet
-- un bouton pour lancer le script
-- une zone de sortie (console) pour `print` et les erreurs
-- un terminal intégré
+- **New Project** / **Open** : un dossier de travail
+- *New* → *Python File* : créer un `.py`
+- *Run* (▶ ou clic droit) : exécuter ; sortie et erreurs dans la console
 
-Comme Thonny : on édite et on exécute au même endroit. La fenêtre est simplement plus riche.
+Comme Thonny : on édite et on exécute au même endroit. Aujourd'hui : être autonome pour les exos multifichiers.
 
 ---
 
-## Créer ou ouvrir un projet
+## Qu'est-ce qu'un module ?
 
-Un *projet* PyCharm = un dossier de travail (vos `.py` et, plus tard, d'autres fichiers).
-
-- **New Project** : choisir un dossier vide, créer le projet
-- **Open** : ouvrir un dossier déjà existant (ex. exercices du labo)
-
-Conseil : un dossier clair par séance ou par série d'exercices, pas des fichiers éparpillés sur le Bureau.
-
----
-
-## Premier fichier dans le projet
-
-Dans l'explorateur à gauche :
-
-- clic droit sur le dossier du projet → *New* → *Python File*
-- nommer par ex. `hello.py` (PyCharm ajoute `.py` si besoin)
-
-Écrire :
+Un *module* = un fichier `.py` (ou une bibliothèque) dont on réutilise le code.
 
 ```python
-print("hello from pycharm")
+import math
+
+print(math.sqrt(16))
 ```
 
-Enregistrer (`Ctrl+S` / `Cmd+S`). Le fichier apparaît dans l'arbre du projet.
+- `import` charge le module
+- on accède aux noms via `math.nom`
+
+Sans module : tout dans un seul fichier. Avec modules : découper et réutiliser.
 
 ---
 
-## Lancer un script
-
-Plusieurs façons équivalentes au début :
-
-- clic droit sur le fichier → *Run 'hello'*
-- ou bouton vert ▶ en haut à droite (après un premier lancement)
-- raccourci : `Shift+F10` (souvent)
-
-La sortie de `print` apparaît dans la console en bas (*Run*).
-
-C'est l'équivalent du bouton « Run » de Thonny, branché sur le fichier courant.
-
----
-
-## Terminal et erreurs
-
-PyCharm inclut un *Terminal* (onglet en bas) : utile plus tard pour `pip`, chemins.
-
-Quand le programme plante :
-
-1. la console *Run* affiche le message (type, fichier, ligne)
-2. l'éditeur souligne souvent la zone suspecte
-3. un clic sur le numéro de ligne dans la trace ouvre l'endroit concerné
-
-Comme en TI1 : lire le type d'erreur et la ligne avant de tout réécrire.
-
----
-
-## PyCharm : gestes du jour
-
-À retenir pour la suite du labo :
-
-- travailler dans un *projet* (dossier), pas un fichier isolé « perdu »
-- *Run* pour exécuter le script courant
-- console *Run* pour la sortie et les messages d'erreur
-- terminal / console Python seulement si utile
-
-Aujourd'hui : être autonome pour les exercices (saisie + fichiers).
-
----
-
-## Rappel TI1 (ciblé)
-
-On ne refait pas TI1. Juste le socle utile pour `input` et les fichiers :
-
-- types : `int`, `float`, `bool`, `str`
-- casting : `int(...)`, `float(...)`, `str(...)`
-- `if` / `elif` / `else`, boucles `while` / `for`
-- listes / dictionnaires (surtout pour JSON)
-- fonctions, et souvent un `main()` déjà vu en séance 6
-
-Si une notion manque : on la rappelle au moment où l'exercice l'exige.
-
----
-
-## `input` : écouter l'utilisateur
+## Formes d'`import`
 
 ```python
-name = input("Votre prénom : ")
-print(f"Bonjour, {name}.")
+import math
+from math import sqrt, pi
+import math as m
 ```
 
-- affiche le message (la *invite*)
-- attend que l'utilisateur tape puis valide (`Entrée`)
-- renvoie la saisie : **toujours une `str`**
+- `import math` : tout le module, préfixe `math.`
+- `from math import sqrt` : importer des noms précis
+- `as` : donner un alias (`m.sqrt(...)`)
 
-`print` sort ; `input` entre.
+Choisir la forme la plus lisible pour le script.
 
 ---
 
-## One-liners classiques
+## Modules *built-in* / stdlib
+
+La bibliothèque standard fournit déjà beaucoup d'outils. Exemples utiles en labo :
+
+- `math` : fonctions mathématiques
+- `random` : tirages aléatoires
+- `json` : structures en mémoire (fichier `.json` : séance 3)
+- `pathlib` : chemins de fichiers
+
+Ce ne sont pas des « extras » à installer : ils viennent avec Python.
+
+---
+
+## Exemple : `math` et `random`
 
 ```python
-name = input("Prénom : ")
-age = int(input("Âge : "))
-price = float(input("Prix : "))
-print(f"{name} a {age} ans.")
+import math
+import random
+
+angle = math.radians(90)
+print(math.sin(angle))
+
+print(random.randint(1, 6))
 ```
 
-- `int(input(...))` / `float(input(...))` : saisie + conversion sur une ligne
-- `print(f"...")` : affichage formaté (rappel *f-string* TI1)
-- Pour l'instant : saisie « raisonnable » ; mauvaises saisies → séance exceptions
+On combine plusieurs modules dans le même script.
+Chaque module a sa doc et ses fonctions.
 
 ---
 
-## Du clavier au fichier
+## Modules personnels
 
-Parfois on demande une valeur au clavier. Souvent, les données sont déjà dans un fichier.
+Vous pouvez créer vos propres modules : un fichier `.py` à côté de votre script.
 
-Aujourd'hui : lire et écrire trois formats courants en labo.
-
-- **txt** : texte ligne par ligne
-- **JSON** : structures (`dict` / `list`) sérialisées
-- **csv** : tableaux (lignes + colonnes)
-
-`input` reste utile pour un chemin, un choix de menu, un paramètre.
-
----
-
-## Fichier vs chemin
-
-Un *fichier* est sur le disque. Un *chemin* dit où le trouver.
+`utils.py` :
 
 ```python
-path = "data/notes.txt"
+def double(n: int) -> int:
+    return n * 2
 ```
 
-Modes courants à l'ouverture :
-
-- `r` : lire (défaut)
-- `w` : écrire (écrase si le fichier existe)
-- `a` : ajouter à la fin
-
-Encodage recommandé : **UTF-8**.
-
----
-
-## `with open(...) as f`
+`main.py` :
 
 ```python
-with open("message.txt", "r", encoding="utf-8") as f:
-    text = f.read()
-print(text)
+from utils import double
+
+print(double(21))
 ```
 
-- `with` ferme le fichier proprement à la fin du bloc
-- on travaille avec `f` (le fichier ouvert)
-- préférer cette forme à `open` / `close` manuels
+Même idée que `import math`, mais le code est le vôtre.
 
 ---
 
-## Fichiers texte (txt)
+## Plusieurs fichiers dans PyCharm
+
+Dans le projet :
+
+- `utils.py` : fonctions réutilisables
+- `main.py` (ou `app.py`) : point d'entrée qui importe `utils`
+
+Les deux fichiers doivent être dans le même dossier (pour commencer), ou dans un paquet plus tard.
+
+Run sur `main.py` : c'est lui qui tire les fils.
+
+---
+
+## `if __name__ == "__main__"` (rappel)
+
+Vu en TI1. Utile dès qu'on importe un module perso :
 
 ```python
-with open("lignes.txt", "r", encoding="utf-8") as f:
-    for line in f:
-        print(line.strip())
+# utils.py
+def double(n: int) -> int:
+    return n * 2
+
+
+if __name__ == "__main__":
+    print(double(2))  # seulement si on lance utils.py directement
 ```
 
-Utile aussi :
+- importé depuis ailleurs : le `if` ne s'exécute pas
+- lancé directement : le bloc de test / démo s'exécute
 
-- `f.read()` : tout le contenu
-- `f.readlines()` : liste de lignes
-- `f.write("…\n")` en mode `"w"` ou `"a"`
-
-Itérer sur `f` : lecture ligne à ligne, simple et claire.
+Rappel bref, pas le cœur de la séance.
 
 ---
 
-## Écrire un txt
+## Script avec `main()` + import
 
 ```python
-name = input("Prénom : ")
-with open("bonjour.txt", "w", encoding="utf-8") as f:
-    f.write(f"Bonjour, {name}.\n")
+# app.py
+from utils import double
+
+
+def main() -> None:
+    print(double(21))
+
+
+if __name__ == "__main__":
+    main()
 ```
 
-Enchaînement typique du jour : saisie → écriture dans un fichier.
-
-Attention au mode `"w"` : il écrase le contenu précédent.
+Structure déjà vue en TI1 ; aujourd'hui elle sert à organiser un projet multifichiers.
 
 ---
 
-## JSON : structures en fichier
-
-JSON encode des données proches des `dict` / `list` de TI1.
+## Alias et bons réflexes
 
 ```python
-import json
-
-with open("etudiant.json", "r", encoding="utf-8") as f:
-    data = json.load(f)
-print(data["prenom"])
+import math as m
+from pathlib import Path
 ```
 
-- `json.load(f)` : fichier → objet Python
-- `json.dump(obj, f)` : objet Python → fichier
-- `import json` : usage pragmatique ; formalisation des modules en séance 6
+- alias court si le module revient souvent (`np`, `pd` plus tard)
+- `from … import …` pour 1-2 noms vraiment utilisés
+- éviter `from module import *` (lisibilité, collisions de noms)
 
 ---
 
-## Écrire un JSON
+## Vers les séances suivantes
 
-```python
-import json
+Aujourd'hui : `import` stdlib + modules perso dans PyCharm.
 
-person = {"prenom": "Ada", "age": 36}
-with open("person.json", "w", encoding="utf-8") as f:
-    json.dump(person, f, ensure_ascii=False, indent=2)
-```
+Ensuite :
 
-- `ensure_ascii=False` : accents conservés
-- `indent=2` : fichier lisible pour un humain
-
-On retrouve `dict` / `list` côté Python, JSON côté disque.
-
----
-
-## CSV : lignes et colonnes
-
-```python
-import csv
-
-with open("notes.csv", "r", encoding="utf-8", newline="") as f:
-    reader = csv.DictReader(f)
-    for row in reader:
-        print(row["nom"], row["note"])
-```
-
-- module `csv` de la bibliothèque standard
-- `DictReader` : chaque ligne → dictionnaire (clés = en-têtes)
-- pandas viendra plus tard pour l'analyse tabulaire
-
----
-
-## Écrire un CSV
-
-```python
-import csv
-
-rows = [{"nom": "Ada", "note": "18"}, {"nom": "Alan", "note": "16"}]
-with open("notes.csv", "w", encoding="utf-8", newline="") as f:
-    writer = csv.DictWriter(f, fieldnames=["nom", "note"])
-    writer.writeheader()
-    writer.writerows(rows)
-```
-
-`newline=""` : recommandé sous Python pour le module `csv` (comportement portable).
-
----
-
-## Erreurs fréquentes (aperçu)
-
-Sans tout gérer aujourd'hui, reconnaître les messages :
-
-- fichier introuvable → `FileNotFoundError`
-- JSON invalide → `json.JSONDecodeError`
-- conversion `int(input(...))` impossible → `ValueError`
-
-Lire le type et la ligne (comme en TI1). La gestion propre avec `try` / `except` : **séance 2**.
-
----
-
-## Bonnes pratiques (jour 1)
-
-- projet PyCharm clair ; données dans un sous-dossier (`data/…`)
-- toujours `encoding="utf-8"` et `with open(...)`
-- invites `input` explicites ; one-liners lisibles
-- scripts courts : une tâche claire (lire, filtrer, réécrire)
-- ne pas encore « blinder » chaque erreur : ce sera pour S2
+- **S2** : exceptions (`try` / `except`), y compris `ImportError`
+- **S3** : fichiers txt / JSON / csv + `input` (réinvestissement de `json`, `pathlib`)
+- **S4+** : numpy, pandas, matplotlib (autres `import`, paquets tiers)
 
 ---
 
 ## Conclusion de la séance
 
 - LTI2 se fait dans PyCharm (TI1 : Thonny)
-- `input` lit au clavier et renvoie toujours une `str` ; one-liners utiles
-- txt / JSON / csv : lire et écrire avec `with open(...)`
-- `json` et `csv` : premiers `import` pragmatiques
-- Suite : exceptions (séance 2), pour rendre ces scripts robustes
+- Un module se charge avec `import` / `from … import …` / `as`
+- Stdlib : `math`, `random`, `json`, `pathlib`, …
+- Modules perso : plusieurs `.py` dans le même projet
+- Suite : exceptions (séance 2)
 
 [→ Quiz](quiz_seance_01.html) [→ Exercices](exercices_seance_01.html)
