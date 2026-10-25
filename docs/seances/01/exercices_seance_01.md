@@ -7,7 +7,7 @@
 
 Travaillez dans **PyCharm** (projet de la séance), plus dans Thonny comme en TI1.
 
-Les énoncés détaillés de cette séance seront ajoutés ultérieurement. En attendant, réinvestissez le cours : scripts avec `input`, casting, et petits dialogues / menus.
+Les énoncés détaillés de cette séance seront ajoutés ultérieurement. En attendant, réinvestissez le cours : `input` + casting, puis lecture / écriture de fichiers **txt**, **JSON** et **csv**.
 
 <nav class="page-nav">
   <a href="../../index.html">← Retour à l'accueil</a>

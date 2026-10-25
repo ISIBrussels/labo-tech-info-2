@@ -1,7 +1,7 @@
 ---
 marp: true
 theme: tech-info
-title: "Séance 1 — Fonction input"
+title: "Séance 1 — Manipulation de fichiers (txt, JSON, csv)"
 paginate: true
 header: "Labo Tech Info 2 — Séance 1 [Sylvain Huraux - HE2B - ISIB](mailto:shuraux@he2b.be)"
 footer: "[← Retour à l'accueil](../../index.html)"
@@ -9,7 +9,7 @@ footer: "[← Retour à l'accueil](../../index.html)"
 
 # Séance 1
 
-Fonction `input`
+Manipulation de fichiers (txt, JSON, csv)
 
 [→ Quiz](quiz_seance_01.html)
 [→ Exercices](exercices_seance_01.html)
@@ -20,10 +20,9 @@ Fonction `input`
 
 - Passer de Thonny (TI1) à PyCharm pour le labo
 - Ouvrir un projet, lancer un script, lire une erreur
-- Rappeler le socle utile de TI1 (sans tout rejouer)
-- Découvrir `input` : saisie clavier, toujours une `str`
-- One-liners classiques : `int(input(...))`, `float(input(...))`, `print(f"...")`
-- Enchaîner `input` + casting pour de petits dialogues
+- Découvrir `input` : saisie clavier, toujours une `str` ; one-liners classiques
+- Lire et écrire des fichiers **txt**, **JSON**, **csv**
+- Enchaîner saisie et fichiers dans de petits scripts
 
 ---
 
@@ -31,15 +30,15 @@ Fonction `input`
 
 Sept séances, dans cet ordre :
 
-1. `input` (aujourd'hui) + prise en main de PyCharm
-2. Modules (*built-in* et personnels)
-3. Exceptions
-4. Manipulation de fichiers (txt, JSON, csv)
-5. NumPy
-6. Pandas
+1. Manipulation de fichiers (txt, JSON, csv) + `input` (aujourd'hui)
+2. Exceptions
+3. numpy et ndarray
+4. Pandas (bases)
+5. Pandas (suite)
+6. Modules (*built-in* et personnels)
 7. Matplotlib
 
-On commence calmement : outil + saisie. Le reste viendra ensuite.
+On commence par l'outil, la saisie, puis les fichiers. Le reste viendra ensuite.
 
 ---
 
@@ -109,46 +108,15 @@ C'est l'équivalent du bouton « Run » de Thonny, branché sur le fichier coura
 
 ---
 
-## Terminal intégré
+## Terminal et erreurs
 
-PyCharm inclut un *Terminal* (onglet en bas).
-
-On peut y faire comme en ligne de commande :
-
-```bash
-python hello.py
-```
-
-Utile plus tard pour `pip`, chemins, commandes hors du bouton Run.
-
-Pour démarrer : le bouton ▶ suffit. Le terminal reste disponible quand on en a besoin.
-
----
-
-## Console Python (REPL) dans PyCharm
-
-Besoin de tester une expression sans écrire un fichier ?
-
-- *Tools* → *Python Console* (ou onglet *Python Console*)
-- ou dans le terminal : `python`, puis instructions une à une
-
-Même idée que le shell de Thonny / le REPL vu en TI1 : expérimenter, puis reporter le code stable dans un script `.py`.
-
----
-
-## Où voir les erreurs ?
+PyCharm inclut un *Terminal* (onglet en bas) : utile plus tard pour `pip`, chemins.
 
 Quand le programme plante :
 
 1. la console *Run* affiche le message (type, fichier, ligne)
 2. l'éditeur souligne souvent la zone suspecte
 3. un clic sur le numéro de ligne dans la trace ouvre l'endroit concerné
-
-Exemple :
-
-```text
-NameError: name 'prin' is not defined
-```
 
 Comme en TI1 : lire le type d'erreur et la ligne avant de tout réécrire.
 
@@ -163,34 +131,21 @@ Comme en TI1 : lire le type d'erreur et la ligne avant de tout réécrire.
 - console *Run* pour la sortie et les messages d'erreur
 - terminal / console Python seulement si utile
 
-On approfondira l'IDE au fil des séances (modules, paquets…). Aujourd'hui : être autonome pour les exercices.
+Aujourd'hui : être autonome pour les exercices (saisie + fichiers).
 
 ---
 
 ## Rappel TI1 (ciblé)
 
-On ne refait pas TI1. Juste le socle utile pour `input` :
+On ne refait pas TI1. Juste le socle utile pour `input` et les fichiers :
 
 - types : `int`, `float`, `bool`, `str`
 - casting : `int(...)`, `float(...)`, `str(...)`
 - `if` / `elif` / `else`, boucles `while` / `for`
+- listes / dictionnaires (surtout pour JSON)
 - fonctions, et souvent un `main()` déjà vu en séance 6
 
 Si une notion manque : on la rappelle au moment où l'exercice l'exige.
-
----
-
-## `print` : parler à l'utilisateur
-
-```python
-print("Bonjour")
-print("Résultat :", 42)
-```
-
-- affiche des informations à l'écran
-- n'attend pas de réponse
-
-Utile pour guider, confirmer, afficher un résultat.
 
 ---
 
@@ -203,41 +158,13 @@ print(f"Bonjour, {name}.")
 
 - affiche le message (la *invite*)
 - attend que l'utilisateur tape puis valide (`Entrée`)
-- renvoie la saisie
+- renvoie la saisie : **toujours une `str`**
 
 `print` sort ; `input` entre.
 
 ---
 
-## Toujours une `str`
-
-```python
-age_text = input("Âge : ")
-print(type(age_text))   # <class 'str'>
-```
-
-Même si on tape `20`, `input` renvoie la chaîne `"20"`, pas l'entier `20`.
-
-Conséquence : pour calculer, il faudra convertir (casting vu en TI1).
-
----
-
-## `input` + casting
-
-```python
-age_text = input("Âge : ")
-age = int(age_text)
-print(f"Dans 10 ans : {age + 10}")
-```
-
-Deux étapes : lire (toujours une `str`), puis convertir.
-On peut aussi le faire en une seule instruction.
-
----
-
 ## One-liners classiques
-
-Formules très fréquentes dès qu'on combine `input` et le casting TI1 :
 
 ```python
 name = input("Prénom : ")
@@ -248,94 +175,184 @@ print(f"{name} a {age} ans.")
 
 - `int(input(...))` / `float(input(...))` : saisie + conversion sur une ligne
 - `print(f"...")` : affichage formaté (rappel *f-string* TI1)
-- Pas de compréhensions de listes ni d'astuces « golf » : on reste lisible
+- Pour l'instant : saisie « raisonnable » ; mauvaises saisies → séance exceptions
 
 ---
 
-## Attention aux conversions
+## Du clavier au fichier
+
+Parfois on demande une valeur au clavier. Souvent, les données sont déjà dans un fichier.
+
+Aujourd'hui : lire et écrire trois formats courants en labo.
+
+- **txt** : texte ligne par ligne
+- **JSON** : structures (`dict` / `list`) sérialisées
+- **csv** : tableaux (lignes + colonnes)
+
+`input` reste utile pour un chemin, un choix de menu, un paramètre.
+
+---
+
+## Fichier vs chemin
+
+Un *fichier* est sur le disque. Un *chemin* dit où le trouver.
 
 ```python
-int("20")      # OK → 20
-int("20.5")    # erreur (ValueError)
-float("20.5")  # OK → 20.5
-int("vingt")   # erreur
+path = "data/notes.txt"
 ```
 
-Pour l'instant : on suppose une saisie « raisonnable ».
-Gérer proprement les mauvaises saisies : séance sur les exceptions.
+Modes courants à l'ouverture :
+
+- `r` : lire (défaut)
+- `w` : écrire (écrase si le fichier existe)
+- `a` : ajouter à la fin
+
+Encodage recommandé : **UTF-8**.
 
 ---
 
-## Petit dialogue
+## `with open(...) as f`
 
 ```python
-def main() -> None:
-    name = input("Prénom : ")
-    city = input("Ville : ")
-    print(f"{name} habite à {city}.")
-
-
-if __name__ == "__main__":
-    main()
+with open("message.txt", "r", encoding="utf-8") as f:
+    text = f.read()
+print(text)
 ```
 
-Enchaîner plusieurs `input`, puis un message de synthèse.
-La structure `main()` / `if __name__ == "__main__"` : déjà vue en TI1 ; on la réutilise.
+- `with` ferme le fichier proprement à la fin du bloc
+- on travaille avec `f` (le fichier ouvert)
+- préférer cette forme à `open` / `close` manuels
 
 ---
 
-## Menu texte simple
+## Fichiers texte (txt)
 
 ```python
-print("1. Dire bonjour")
-print("2. Quitter")
-choice = input("Votre choix : ")
-
-if choice == "1":
-    print("Bonjour !")
-elif choice == "2":
-    print("Au revoir.")
-else:
-    print("Choix inconnu.")
+with open("lignes.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        print(line.strip())
 ```
 
-`input` alimente des conditions (et plus tard des boucles) : bases des programmes interactifs.
+Utile aussi :
+
+- `f.read()` : tout le contenu
+- `f.readlines()` : liste de lignes
+- `f.write("…\n")` en mode `"w"` ou `"a"`
+
+Itérer sur `f` : lecture ligne à ligne, simple et claire.
 
 ---
 
-## Boucle + saisie
+## Écrire un txt
 
 ```python
-answer = ""
-while answer != "oui" and answer != "non":
-    answer = input("Continuer ? (oui/non) : ")
-print(f"Réponse retenue : {answer}")
+name = input("Prénom : ")
+with open("bonjour.txt", "w", encoding="utf-8") as f:
+    f.write(f"Bonjour, {name}.\n")
 ```
 
-On répète la question tant que la réponse n'est pas acceptable.
-Toujours sans `try` / `except` : validation par conditions et boucles.
+Enchaînement typique du jour : saisie → écriture dans un fichier.
+
+Attention au mode `"w"` : il écrase le contenu précédent.
 
 ---
 
-## Bonnes pratiques (saisie)
+## JSON : structures en fichier
 
-- message d'invite explicite (`"Nombre entier : "`, pas juste `"> "`)
-- convertir dès que le type numérique est nécessaire
-- afficher un feedback (`print`) après une étape importante
-- garder les scripts courts et lisibles dans PyCharm
+JSON encode des données proches des `dict` / `list` de TI1.
 
-Objectif du jour : un dialogue correct, pas un programme « blindé ».
+```python
+import json
+
+with open("etudiant.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+print(data["prenom"])
+```
+
+- `json.load(f)` : fichier → objet Python
+- `json.dump(obj, f)` : objet Python → fichier
+- `import json` : usage pragmatique ; formalisation des modules en séance 6
+
+---
+
+## Écrire un JSON
+
+```python
+import json
+
+person = {"prenom": "Ada", "age": 36}
+with open("person.json", "w", encoding="utf-8") as f:
+    json.dump(person, f, ensure_ascii=False, indent=2)
+```
+
+- `ensure_ascii=False` : accents conservés
+- `indent=2` : fichier lisible pour un humain
+
+On retrouve `dict` / `list` côté Python, JSON côté disque.
+
+---
+
+## CSV : lignes et colonnes
+
+```python
+import csv
+
+with open("notes.csv", "r", encoding="utf-8", newline="") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        print(row["nom"], row["note"])
+```
+
+- module `csv` de la bibliothèque standard
+- `DictReader` : chaque ligne → dictionnaire (clés = en-têtes)
+- pandas viendra plus tard pour l'analyse tabulaire
+
+---
+
+## Écrire un CSV
+
+```python
+import csv
+
+rows = [{"nom": "Ada", "note": "18"}, {"nom": "Alan", "note": "16"}]
+with open("notes.csv", "w", encoding="utf-8", newline="") as f:
+    writer = csv.DictWriter(f, fieldnames=["nom", "note"])
+    writer.writeheader()
+    writer.writerows(rows)
+```
+
+`newline=""` : recommandé sous Python pour le module `csv` (comportement portable).
+
+---
+
+## Erreurs fréquentes (aperçu)
+
+Sans tout gérer aujourd'hui, reconnaître les messages :
+
+- fichier introuvable → `FileNotFoundError`
+- JSON invalide → `json.JSONDecodeError`
+- conversion `int(input(...))` impossible → `ValueError`
+
+Lire le type et la ligne (comme en TI1). La gestion propre avec `try` / `except` : **séance 2**.
+
+---
+
+## Bonnes pratiques (jour 1)
+
+- projet PyCharm clair ; données dans un sous-dossier (`data/…`)
+- toujours `encoding="utf-8"` et `with open(...)`
+- invites `input` explicites ; one-liners lisibles
+- scripts courts : une tâche claire (lire, filtrer, réécrire)
+- ne pas encore « blinder » chaque erreur : ce sera pour S2
 
 ---
 
 ## Conclusion de la séance
 
 - LTI2 se fait dans PyCharm (TI1 : Thonny)
-- Projet, Run, console pour la sortie et les erreurs
-- `input` lit au clavier et renvoie toujours une `str`
-- One-liners : `int(input(...))`, `float(input(...))`, `print(f"...")`
-- Casting (`int`, `float`) pour calculer sur la saisie
-- Petits menus / dialogues avec conditions et boucles
-- Suite : modules (séance 2)
+- `input` lit au clavier et renvoie toujours une `str` ; one-liners utiles
+- txt / JSON / csv : lire et écrire avec `with open(...)`
+- `json` et `csv` : premiers `import` pragmatiques
+- Suite : exceptions (séance 2), pour rendre ces scripts robustes
 
 [→ Quiz](quiz_seance_01.html) [→ Exercices](exercices_seance_01.html)
