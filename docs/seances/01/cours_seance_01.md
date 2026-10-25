@@ -34,7 +34,7 @@ Sept séances, dans cet ordre :
 1. `input` (aujourd'hui) + prise en main de PyCharm
 2. Modules (*built-in* et personnels)
 3. Exceptions
-4. Fichiers (txt, json, csv)
+4. Manipulation de fichiers (txt, JSON, csv)
 5. NumPy
 6. Pandas
 7. Matplotlib
