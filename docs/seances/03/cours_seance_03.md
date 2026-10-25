@@ -1,7 +1,7 @@
 ---
 marp: true
 theme: tech-info
-title: "Séance 3 — Manipulation de fichiers (txt, JSON, csv)"
+title: "Séance 3 — Manipulation de fichiers (txt, JSON, csv) + input"
 paginate: true
 header: "Labo Tech Info 2 — Séance 3 [Sylvain Huraux - HE2B - ISIB](mailto:shuraux@he2b.be)"
 footer: "[← Retour à l'accueil](../../index.html)"
@@ -9,7 +9,7 @@ footer: "[← Retour à l'accueil](../../index.html)"
 
 # Séance 3
 
-Manipulation de fichiers (txt, JSON, csv)
+Manipulation de fichiers (txt, JSON, csv) + `input`
 
 [→ Quiz](quiz_seance_03.html)
 [→ Exercices](exercices_seance_03.html)
