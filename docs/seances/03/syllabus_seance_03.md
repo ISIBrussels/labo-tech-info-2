@@ -1,4 +1,4 @@
-# Séance 3 — Manipulation de fichiers (txt, JSON, csv) + `input`
+# Séance 3 — Fichiers (txt, JSON, csv), `input`
 
 <nav class="page-nav">
   <a href="../../index.html">← Retour à l'accueil</a>

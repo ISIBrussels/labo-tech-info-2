@@ -43,7 +43,7 @@ Vous y trouverez l'ensemble des ressources du laboratoire :
     </tr>
     <tr>
       <td>3</td>
-      <td>Manipulation de fichiers (txt, JSON, csv) + <code>input</code></td>
+      <td>Fichiers (txt, JSON, csv), <code>input</code></td>
       <td><a href="seances/03/cours_seance_03.md">Slides</a></td>
       <td><a href="seances/03/syllabus_seance_03.md">Syllabus</a></td>
       <td><a href="seances/03/quiz_seance_03.html">Quiz</a></td>
