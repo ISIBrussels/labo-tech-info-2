@@ -1,4 +1,5 @@
 themeSet:
-  - docs/themes
-theme: tech-info
+  - docs/themes/isib.css
+  - docs/themes/tech-info.css
+theme: isib
 html: true
