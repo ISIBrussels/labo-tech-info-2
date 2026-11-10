@@ -1,4 +1,4 @@
-# Séance 2 — Syllabus
+# Séance 2 — Exceptions, `try` / `except`
 
 <nav class="page-nav">
   <a href="../../index.html">← Retour à l'accueil</a>
@@ -6,8 +6,6 @@
   <a href="quiz_seance_02.html">Quiz</a>
   <a href="exercices_seance_02.html">Exercices</a>
 </nav>
-
-Exceptions, `try` / `except`
 
 ## Objectifs de la séance
 

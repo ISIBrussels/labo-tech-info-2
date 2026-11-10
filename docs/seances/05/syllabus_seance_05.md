@@ -1,4 +1,4 @@
-# Séance 5 — Syllabus
+# Séance 5 — Pandas : series et dataframe (bases)
 
 <nav class="page-nav">
   <a href="../../index.html">← Retour à l'accueil</a>
@@ -6,8 +6,6 @@
   <a href="quiz_seance_05.html">Quiz</a>
   <a href="exercices_seance_05.html">Exercices</a>
 </nav>
-
-Pandas : series et dataframe (bases)
 
 ## Objectifs de la séance
 

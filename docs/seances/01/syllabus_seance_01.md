@@ -1,4 +1,4 @@
-# Séance 1 — Syllabus
+# Séance 1 — Modules *built-in* et modules personnels
 
 <nav class="page-nav">
   <a href="../../index.html">← Retour à l'accueil</a>
@@ -6,8 +6,6 @@
   <a href="quiz_seance_01.html">Quiz</a>
   <a href="exercices_seance_01.html">Exercices</a>
 </nav>
-
-Modules *built-in* et modules personnels
 
 ## Objectifs de la séance
 
@@ -197,7 +195,6 @@ Ensuite :
 - Stdlib : `math`, `random`, `json`, `pathlib`, …
 - Modules perso : plusieurs `.py` dans le même projet
 - Suite : exceptions (séance 2)
-
 
 <nav class="page-nav">
   <a href="../../index.html">← Retour à l'accueil</a>

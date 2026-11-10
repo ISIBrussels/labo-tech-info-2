@@ -1,4 +1,4 @@
-# Séance 4 — Syllabus
+# Séance 4 — Numpy : tableaux ndarray
 
 <nav class="page-nav">
   <a href="../../index.html">← Retour à l'accueil</a>
@@ -6,8 +6,6 @@
   <a href="quiz_seance_04.html">Quiz</a>
   <a href="exercices_seance_04.html">Exercices</a>
 </nav>
-
-Numpy : tableaux ndarray
 
 ## Objectifs de la séance
 
