@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: tech-info
+theme: isib
 title: "Séance 6 — Pandas : series et dataframe (suite)"
 paginate: true
 header: "Labo Tech Info 2 — Séance 6 [Sylvain Huraux - HE2B - ISIB](mailto:shuraux@he2b.be)"
