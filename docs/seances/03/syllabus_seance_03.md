@@ -1,4 +1,4 @@
-# Séance 3 — Syllabus
+# Séance 3 — Manipulation de fichiers (txt, JSON, csv) + `input`
 
 <nav class="page-nav">
   <a href="../../index.html">← Retour à l'accueil</a>
@@ -6,8 +6,6 @@
   <a href="quiz_seance_03.html">Quiz</a>
   <a href="exercices_seance_03.html">Exercices</a>
 </nav>
-
-Manipulation de fichiers (txt, JSON, csv) + `input`
 
 ## Objectifs de la séance
 
@@ -203,7 +201,6 @@ Aujourd'hui : scripts utiles **et** robustes.
 - `json` / `csv` / `pathlib` : modules S1 en situation I/O
 - `try` / `except` (S2) pour ne pas planter
 - Suite : Numpy : tableaux ndarray (séance 4)
-
 
 <nav class="page-nav">
   <a href="../../index.html">← Retour à l'accueil</a>

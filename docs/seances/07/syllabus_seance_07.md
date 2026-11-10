@@ -1,4 +1,4 @@
-# Séance 7 — Syllabus
+# Séance 7 — Matplotlib et visualisation
 
 <nav class="page-nav">
   <a href="../../index.html">← Retour à l'accueil</a>
@@ -6,8 +6,6 @@
   <a href="quiz_seance_07.html">Quiz</a>
   <a href="exercices_seance_07.html">Exercices</a>
 </nav>
-
-Matplotlib et visualisation
 
 ## Objectifs de la séance
 
