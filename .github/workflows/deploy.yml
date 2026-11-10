@@ -43,19 +43,24 @@ jobs:
             fi
           done
 
-      - name: Build exercise pages (Markdown to static HTML)
+      - name: Build exercise and syllabus pages (Markdown to static HTML)
         run: |
-          for file in docs/seances/*/exercices_seance_*.md; do
+          for file in docs/seances/*/exercices_seance_*.md docs/seances/*/syllabus_seance_*.md; do
             if [ -f "$file" ]; then
               out="dist/${file#docs/}"
               out="${out%.md}.html"
               mkdir -p "$(dirname "$out")"
 
               body="$(marked "$file")"
-              session_num="${file##*_seance_}"
+              base="$(basename "$file")"
+              session_num="${base##*_seance_}"
               session_num="${session_num%.md}"
               session_num=$((10#$session_num))
-              page_title="Séance ${session_num} — Exercices"
+              if [[ "$base" == syllabus_seance_* ]]; then
+                page_title="Séance ${session_num} — Syllabus"
+              else
+                page_title="Séance ${session_num} — Exercices"
+              fi
               cat > "$out" <<EOF
           <!doctype html>
           <html lang="fr">
@@ -194,6 +199,7 @@ jobs:
           sed -E \
             -e 's#(seances/[0-9]{2}/cours_seance_[0-9]{2})\.md#\1.html#g' \
             -e 's#(seances/[0-9]{2}/exercices_seance_[0-9]{2})\.md#\1.html#g' \
+            -e 's#(seances/[0-9]{2}/syllabus_seance_[0-9]{2})\.md#\1.html#g' \
             docs/index.md > /tmp/pages-index.md
 
           body="$(marked /tmp/pages-index.md)"
@@ -276,6 +282,15 @@ jobs:
                   letter-spacing: 0.03em;
                   padding: 0.75rem 1rem;
                   border: none;
+                  vertical-align: middle;
+                }
+
+                thead tr:nth-child(2) th {
+                  font-size: 0.8rem;
+                  font-weight: 500;
+                  letter-spacing: 0.02em;
+                  padding: 0.45rem 0.75rem;
+                  border-top: 1px solid rgba(255, 255, 255, 0.25);
                 }
 
                 tbody td {
