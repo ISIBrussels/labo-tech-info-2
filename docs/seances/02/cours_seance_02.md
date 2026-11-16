@@ -4,15 +4,15 @@ theme: isib
 title: "Séance 2 — Exceptions"
 paginate: true
 header: "Labo Tech Info 2 — Séance 2 [Sylvain Huraux - HE2B - ISIB](mailto:shuraux@he2b.be)"
-footer: "[← Retour à l'accueil](../../index.html)"
+footer: "[Accueil](../../index.html)"
 ---
 
 # Séance 2
 
 Exceptions, `try` / `except`
 
-[→ Quiz](quiz_seance_02.html)
-[→ Exercices](exercices_seance_02.html)
+[Quiz](quiz_seance_02.html)
+[Exercices](exercices_seance_02.html)
 
 ---
 

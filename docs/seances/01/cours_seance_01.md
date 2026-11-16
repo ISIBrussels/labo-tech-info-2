@@ -4,15 +4,15 @@ theme: isib
 title: "Séance 1 — Modules built-in et personnels"
 paginate: true
 header: "Labo Tech Info 2 — Séance 1 [Sylvain Huraux - HE2B - ISIB](mailto:shuraux@he2b.be)"
-footer: "[← Retour à l'accueil](../../index.html)"
+footer: "[Accueil](../../index.html)"
 ---
 
 # Séance 1
 
 Modules *built-in* et modules personnels
 
-[→ Quiz](quiz_seance_01.html)
-[→ Exercices](exercices_seance_01.html)
+[Quiz](quiz_seance_01.html)
+[Exercices](exercices_seance_01.html)
 
 ---
 
@@ -236,4 +236,4 @@ Ensuite :
 - Modules perso : plusieurs `.py` dans le même projet
 - Suite : exceptions (séance 2)
 
-[→ Quiz](quiz_seance_01.html) [→ Exercices](exercices_seance_01.html)
+[Quiz](quiz_seance_01.html) [Exercices](exercices_seance_01.html)
