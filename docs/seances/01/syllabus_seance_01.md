@@ -1,7 +1,7 @@
 # Séance 1 — Modules *built-in* et modules personnels
 
 <nav class="page-nav">
-  <a href="../../index.html">← Retour à l'accueil</a>
+  <a href="../../index.html">Accueil</a>
   <a href="cours_seance_01.html">Slides du cours</a>
   <a href="quiz_seance_01.html">Quiz</a>
   <a href="exercices_seance_01.html">Exercices</a>
@@ -197,7 +197,7 @@ Ensuite :
 - Suite : exceptions (séance 2)
 
 <nav class="page-nav">
-  <a href="../../index.html">← Retour à l'accueil</a>
+  <a href="../../index.html">Accueil</a>
   <a href="cours_seance_01.html">Slides du cours</a>
   <a href="quiz_seance_01.html">Quiz</a>
   <a href="exercices_seance_01.html">Exercices</a>

@@ -1,7 +1,7 @@
 # Séance 6 — Pandas : series et dataframe (suite)
 
 <nav class="page-nav">
-  <a href="../../index.html">← Retour à l'accueil</a>
+  <a href="../../index.html">Accueil</a>
   <a href="cours_seance_06.html">Slides du cours</a>
   <a href="quiz_seance_06.html">Quiz</a>
   <a href="exercices_seance_06.html">Exercices</a>
@@ -14,7 +14,7 @@
 Le syllabus détaillé de cette séance sera ajouté ultérieurement. En attendant, utilisez les [slides du cours](cours_seance_06.html).
 
 <nav class="page-nav">
-  <a href="../../index.html">← Retour à l'accueil</a>
+  <a href="../../index.html">Accueil</a>
   <a href="cours_seance_06.html">Slides du cours</a>
   <a href="quiz_seance_06.html">Quiz</a>
   <a href="exercices_seance_06.html">Exercices</a>
